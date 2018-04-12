@@ -13,3 +13,7 @@
   <% end %>
 </div> 
 
+This is the nesting as I understand it:
+
+Posts => { categories: [],
+            comments: [] => :users}
