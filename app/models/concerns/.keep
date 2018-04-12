@@ -1,0 +1,14 @@
+<!--
+<div>
+  <h4>Create a new comment:</h4>
+  <%= form_for(@comment) do |f| %>
+    <%= f.label "Content" %>
+    <%= f.text_area :content %>
+    <%= f.collection_check_boxes :user_ids, User.all, :id, :username %>
+    <%= f.fields_for :users, User.new do |users_fields| %>
+      <%= users_fields.text_field :username %>
+    <% end %>
+  <% end %>
+</div>
+-->
+

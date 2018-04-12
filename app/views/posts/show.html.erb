@@ -1,1 +1,49 @@
+<h3>Post: <%= @post.title %></h3>
+
+<p>
+  <%= @post.content %>
+</p>
+
+<h4>Categories</h4>
+
+<div>
+  <% @post.categories.each do |category| %>
+    <span><%= category.name %></span>
+  <% end %>
+</div>
+
+<div>
+  <% @post.users.uniq.each do |user| %>
+    <p><%= link_to user.username, user_path(user) %></p>
+  <% end %>
+</div>
+
+<div>
+  <% @post.comments.each do |comment| %>
+    <p><%= comment.user.username %> commented: <%= comment.content %></p>
+  <% end %>
+</div>
+
+<div>
+  <h4>Commenters for this post:</h4>
+  <% @post.comments.each do |comment| %>
+    <p><%= link_to comment.user.username, user_path(comment.user) %></p>
+  <% end %>
+</div>
+
+<div>
+  <h4>Add a new comment:</h4>
+  <%= form_for (@post) do |f| %>
+
+ <!-- tried to put in a collection_select for :users and a fields_for for a new user field but I could not get it to work. You can see my code in NOTES.MD -->
+    <%= f.fields_for :comments do |comment| %>
+      <%= comment.label :content %>
+      <%= comment.text_area :content %>
+    <% end %>
+  <% end %>
+</div> 
+
+
+
+
 
